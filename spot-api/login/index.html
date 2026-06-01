@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Login Moderno</title>
+</head>
+
+<body>
+
+    <!-- Bolhas animadas -->
+    <section id="bolhas"></section>
+
+    <!-- Blur overlay -->
+    <div class="blur"></div>
+
+    <!-- Login -->
+    <section class="login">
+
+        <h1 id="login">Login</h1>
+
+        <!-- Email -->
+        <input
+            class="input"
+            type="email"
+            placeholder="Email"
+            style="background: url('./img/user.svg') no-repeat right 10px center; background-size: 20px;"
+        >
+
+        <!-- Senha -->
+        <input
+            class="input"
+            type="password"
+            placeholder="Senha"
+        >
+
+        <!-- Lembrar -->
+        <div class="checkbox-div">
+            <div class="remember">
+                <input type="checkbox" id="remember">
+                <label for="remember">Lembrar de mim</label>
+            </div>
+
+            <a href="#">Esqueceu a senha?</a>
+        </div>
+
+        <!-- Divisor -->
+        <div class="divider">
+            <hr>
+            <p>OU</p>
+            <hr>
+        </div>
+
+        <!-- Botões -->
+        <button class="btn primary">Entrar</button>
+        <button class="btn outline">Criar conta</button>
+
+    </section>
+
+</body>
+
+<script>
+const container = document.getElementById("bolhas");
+
+for (let i = 0; i < 25; i++) {
+    const bolha = document.createElement("div");
+    bolha.classList.add("mancha");
+
+    const size = Math.random() * 300 + 150;
+    bolha.style.width = size + "px";
+    bolha.style.height = size + "px";
+
+    bolha.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
+
+    bolha.style.top = Math.random() * 100 + "%";
+    bolha.style.left = Math.random() * 100 + "%";
+
+    bolha.style.opacity = 0.5;
+
+    container.appendChild(bolha);
+}
+</script>
+
+</html>
+``

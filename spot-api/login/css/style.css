@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* 🔥 impede scroll */
+}
+
+*::selection {
+    background: transparent;
+    color: inherit;
+}
+
+/* 🔥 Fundo animado melhorado */
+body {
+  background: linear-gradient(-45deg, #131313, #260133, #3a0050, #000000);
+  /* background-size: 400% 400%; */
+  animation: gradient 12s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Blur geral */
+.blur {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    backdrop-filter: blur(20px);
+    justify-content: center;
+    align-items: center;
+}
+
+/* 🔥 manchas animadas */
+.mancha {
+    position: absolute;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    filter: blur(20px);
+    animation: flutuar 8s infinite ease-in-out;
+}
+
+/* correção aqui 👇 */
+@keyframes flutuar {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(20px, 25px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* 🔥 container login estilo glass */
+.login {
+  padding: 20px;
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.05);
+
+  border-radius: 20px;
+  box-shadow:
+    inset 0 0 10px #360036,
+    0 0 30px #360036;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  transition: 0.3s;
+}
+
+/* efeito hover no card */
+.login:hover {
+  box-shadow:
+    inset 0 0 15px #540054,
+    0 0 50px #7a007a;
+}
+
+hr {
+    border: solid 1px rgb(50, 0, 60);
+    width: 100px;
+}
+
+.checkbox-div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 12px;
+}
+
+.checkbox-div a {
+    color: #c77dff;
+    text-decoration: none;
+}
+
+.checkbox-div a:hover {
+    text-decoration: underline;
+}
+
+/* divisor */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ccc;
+}
+
+.divider hr {
+    flex: 1;
+    border: 1px solid #444;
+}
+
+/* botões modernos */
+.btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 16px;
+}
+
+/* botão principal */
+.primary {
+    background: linear-gradient(45deg, #a200ff, #ff00c8);
+    color: white;
+    box-shadow: 0 0 15px #a200ff;
+}
+
+.primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #ff00c8;
+}
+
+/* botão secundário */
+.outline {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #a200ff;
+}
+
+.outline:hover {
+    background: #a200ff;
+}
+
+/* título */
+#login {
+    position: absolute;
+    top: 20px;
+    font-size: 50px;
+    color: #ece0f8;
+    text-shadow: 0 0 10px #000000;
+}
+
+/* inputs modernos */
+.input {
+    position: relative;
+    width: 250px;
+    height: 35px;
+
+    border: 1.6px solid #5a005a;
+    border-radius: 10px;
+
+    font-size: 18px;
+    padding: 5px 10px;
+
+    color: #ece0f8;
+    background: transparent;
+
+    box-shadow:
+      inset 0 0 10px black,
+      0 0 10px rgba(36, 0, 41, 0.5);
+
+    transition: 0.3s;
+}
+
+/* 🔥 efeito hover input */
+.input:hover,
+.input:focus {
+    border-color: #a200ff;
+    box-shadow:
+      inset 0 0 15px black,
+      0 0 15px #a200ff;
+    outline: none;
+}
+
+/* checkbox */
+.remember {
+    display: flex;
+    gap: 10px;
+    color: #eee;
+}
