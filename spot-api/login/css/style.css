@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
+
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family:"Modak", system-ui;
+    font-weight: 100;
 }
 
 html, body {
@@ -58,8 +61,8 @@ body {
 .login {
   padding: 20px;
   position: absolute;
-  width: 300px;
-  height: 400px;
+  width: 400px;
+  height: 500px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -78,14 +81,14 @@ body {
   align-items: center;
   gap: 15px;
 
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 /* efeito hover no card */
 .login:hover {
   box-shadow:
-    inset 0 0 15px #540054,
-    0 0 50px #7a007a;
+    inset 0 0 20px #5c005cc0,
+    0 0 20px #410041be;
 }
 
 hr {
@@ -97,7 +100,7 @@ hr {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .checkbox-div a {
@@ -130,7 +133,7 @@ hr {
     border: none;
     cursor: pointer;
     transition: 0.3s;
-    font-size: 16px;
+    font-size: 24px;
 }
 
 /* botão principal */
@@ -141,7 +144,7 @@ hr {
 }
 
 .primary:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
     box-shadow: 0 0 25px #ff00c8;
 }
 
@@ -154,6 +157,7 @@ hr {
 
 .outline:hover {
     background: #a200ff;
+    transform: scale(1.02);
 }
 
 /* título */
@@ -174,7 +178,7 @@ hr {
     border: 1.6px solid #5a005a;
     border-radius: 10px;
 
-    font-size: 18px;
+    font-size: 19px;
     padding: 5px 10px;
 
     color: #ece0f8;

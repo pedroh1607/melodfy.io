@@ -1,6 +1,19 @@
 async function fetchArtists() {
-  const response = await fetch("http://localhost:3000/api/artists");
-  return await response.json();
+  const url = location.protocol === "file:" ? "http://localhost:3000/api/artists" : "/api/artists";
+  const response = await fetch(url);
+  let data;
+
+  try {
+    data = await response.json();
+  } catch (e) {
+    throw new Error("Resposta inválida do servidor");
+  }
+
+  if (!response.ok) {
+    throw new Error(data.error || response.statusText || "Erro ao buscar artistas");
+  }
+
+  return data;
 }
 
 async function renderArtists() {
@@ -9,6 +22,11 @@ async function renderArtists() {
   try {
     const albums = await fetchArtists();
 
+    if (!Array.isArray(albums) || albums.length === 0) {
+      grid.innerHTML = "<p>Nenhum álbum encontrado.</p>";
+      return;
+    }
+
     grid.innerHTML = "";
 
     albums.forEach(album => {
@@ -16,9 +34,9 @@ async function renderArtists() {
       card.classList.add("artist-card");
 
       card.innerHTML = `
-        <img src="${album.images[0]?.url}" />
-        <h3>${album.name}</h3>
-        <p>${album.artists[0]?.name}</p>
+        <img src="${album.images[0]?.url || ""}" />
+        <h3>${album.name || "Sem título"}</h3>
+        <p>${album.artists[0]?.name || "Artista desconhecido"}</p>
       `;
 
       grid.appendChild(card);
@@ -26,7 +44,7 @@ async function renderArtists() {
 
   } catch (err) {
     console.error(err);
-    grid.innerHTML = "<p>Erro ao carregar 😢</p>";
+    grid.innerHTML = `<p>Erro ao carregar 😢<br>${err.message}</p>`;
   }
 }
 
