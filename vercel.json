@@ -1,6 +1,4 @@
 {
-  "buildCommand": "npm install",
-  "outputDirectory": "spot-api/public",
   "rewrites": [
     {
       "source": "/api/:path*",

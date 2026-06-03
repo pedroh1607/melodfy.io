@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/styles.css" />
+  <script src="https://kit.fontawesome.com/5092319554.js" crossorigin="anonymous"></script>
+  <title>Melodify</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="sidebar-container border-animation">
+      <nav class="sidebar" >
+
+        <div class="nav-logo">
+          <i class="fa-brands fa-spotify"></i>
+        </div>
+
+        <div class="nav-library">
+          <i class="fa-solid fa-book"></i>
+          <p>Sua Biblioteca +</p>
+        </div>
+
+        <div class="nav-playlist">
+          <h5>Crie sua Playlist</h5>
+          <p>É fácil, vamos te ajudar</p>
+          <button>Criar</button>
+        </div>
+
+        <div class="nav-podcast">
+          <h5>Que tal um podcast?</h5>
+          <p>Fique por dentro dos episódios</p>
+          <button>Explorar</button>
+        </div>
+
+        <div class="nav-footer">
+          <a href="#">Legal</a>
+          <a href="#">Privacidade</a>
+          <a href="#">Cookies</a>
+        </div>
+
+      </nav>
+    </div>
+
+    <main>
+      <header>
+        <div class="search-bar border-animation">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input id="searchInput" placeholder="O que você quer ouvir?" type="text"/>
+        </div>
+      </header>
+      <section class="">
+        <section class="content">
+          <section class="artists">
+            <h2>Populares</h2>
+            <div id="artists-grid" class="artists-grid"></div>
+          </section>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

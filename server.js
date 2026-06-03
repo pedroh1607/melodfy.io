@@ -5,7 +5,7 @@ import cors from "cors";
 
 const app = express();
 app.use(cors());
-app.use(express.static("spot-api/public"));
+app.use(express.static("public"));
 
 const CLIENT_ID = "7baec1fac0b3443899a8c233e";
 const CLIENT_SECRET = "0bb12ad0a875473ab69b4129e4e1ba6c";
@@ -56,7 +56,7 @@ app.get("/api/artists", async (req, res) => {
 });
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(process.cwd(), "spot-api", "public", "index.html"));
+  res.sendFile(path.join(process.cwd(), "public", "index.html"));
 });
 
 app.listen(3000, () => {
