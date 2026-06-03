@@ -1,5 +1,18 @@
 async function fetchArtists() {
-  const url = location.protocol === "file:" ? "http://localhost:3000/api/artists" : "/api/artists";
+  // Detectar ambiente:
+  // - file:// = abrir HTML local, usar localhost
+  // - http://localhost:3000 = rodar localmente com Node
+  // - outro domínio = Vercel ou outro hosting (usa /api/...)
+  let url = "/api/artists";
+  
+  if (location.protocol === "file:") {
+    url = "http://localhost:3000/api/artists";
+  } else if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+    // Se estiver em um domínio (Vercel, GitHub Pages com proxy, etc.), usa /api/...
+    // que é relativo ao servidor
+    url = `${location.origin}/api/artists`;
+  }
+
   const response = await fetch(url);
   let data;
 
