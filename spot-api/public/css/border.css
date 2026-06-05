@@ -7,15 +7,14 @@
 }
 
 .border-animation::before {
-  content: "";
-  position: absolute;
-  width: 1200px;
-  height: 1200px;
-  background: conic-gradient(#ff00c8, #00fff7, #a200ff, #ff00c8);
-  animation: girar 2s linear infinite;
-  z-index: 1;
+    content: "";
+    position: absolute;
+    width: 333%;
+    height: 4700%;
+    background: conic-gradient(#ff00c8, #00fff7, #a200ff, #ff00c8);
+    animation: girar 2s linear infinite;
+    z-index: 1;
 }
-
 .border-animation::after {
   content: "";
   position: absolute;
