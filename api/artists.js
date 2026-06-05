@@ -1,4 +1,4 @@
-const CLIENT_ID = "7baec1fac0b3443899a8c233e";
+const CLIENT_ID = "7baec1fac0b3443899a8e6245a9c233e";
 const CLIENT_SECRET = "0bb12ad0a875473ab69b4129e4e1ba6c";
 
 async function getAccessToken() {
