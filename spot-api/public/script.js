@@ -36,7 +36,7 @@ async function renderArtists() {
     const albums = await fetchArtists();
 
     if (!Array.isArray(albums) || albums.length === 0) {
-      grid.innerHTML = "<p>Nenhum álbum encontrado.</p>";
+      grid.innerHTML = "<p>Nenhum álbum encontrado.</p><img src='https://media.istockphoto.com/id/1980276924/vector/no-photo-thumbnail-graphic-element-no-found-or-available-image-in-the-gallery-or-album-flat.jpg?s=612x612&w=0&k=20&c=ZBE3NqfzIeHGDPkyvulUw14SaWfDj2rZtyiKv3toItk=' alt='Not found' />";
       return;
     }
 
