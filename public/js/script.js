@@ -1,29 +1,42 @@
 async function fetchArtists() {
   // Detectar ambiente:
   // - file:// = abrir HTML local, usar localhost
-  // - http://localhost:3000 = rodar localmente com Node
-  // - outro domínio = Vercel ou outro hosting (usa /api/...)
+  // - servidor local ou Vercel = usar rota relativa /api/artists
   let url = "/api/artists";
-  
+
   if (location.protocol === "file:") {
     url = "http://localhost:3000/api/artists";
-  } else if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
-    // Se estiver em um domínio (Vercel, GitHub Pages com proxy, etc.), usa /api/...
-    // que é relativo ao servidor
-    url = `${location.origin}/api/artists`;
   }
 
+  console.log("fetching artists from", url);
   const response = await fetch(url);
-  let data;
-
-  try {
-    data = await response.json();
-  } catch (e) {
-    throw new Error("Resposta inválida do servidor");
-  }
+  const text = await response.text();
+  const contentType = response.headers.get("content-type") || "";
 
   if (!response.ok) {
-    throw new Error(data.error || response.statusText || "Erro ao buscar artistas");
+    let errorMessage = response.statusText || "Erro ao buscar artistas";
+    if (contentType.includes("application/json")) {
+      try {
+        const json = JSON.parse(text);
+        errorMessage = json.error || json.message || errorMessage;
+      } catch {
+        errorMessage = text || errorMessage;
+      }
+    } else {
+      errorMessage = text || errorMessage;
+    }
+    throw new Error(errorMessage);
+  }
+
+  if (!contentType.includes("application/json")) {
+    throw new Error(`Resposta inesperada do servidor: ${text.slice(0, 200)}`);
+  }
+
+  let data;
+  try {
+    data = JSON.parse(text);
+  } catch (e) {
+    throw new Error(`Resposta não é JSON: ${text.slice(0, 200)}`);
   }
 
   return data;
