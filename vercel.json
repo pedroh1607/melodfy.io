@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/api/artists.js",
-      "destination": "/api/artists.js"
+      "source": "/api/artists",
+      "destination": "/api/artists"
     },
     {
       "source": "/(.*)",
