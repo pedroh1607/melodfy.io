@@ -1,6 +1,21 @@
 const CLIENT_ID = "7baec1fac0b3443899a8e6245a9c233e";
 const CLIENT_SECRET = "0bb12ad0a875473ab69b4129e4e1ba6c";
 
+async function parseJsonResponse(response) {
+  const text = await response.text();
+  const contentType = response.headers.get("content-type") || "";
+
+  if (!contentType.includes("application/json")) {
+    throw new Error(`Resposta inesperada do servidor (${response.url}): ${text.slice(0, 200)}`);
+  }
+
+  try {
+    return JSON.parse(text);
+  } catch (err) {
+    throw new Error(`Falha ao parsear JSON (${response.url}): ${text.slice(0, 200)}`);
+  }
+}
+
 async function getAccessToken() {
   const credentials = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString("base64");
   const response = await fetch("https://accounts.spotify.com/api/token", {
@@ -12,7 +27,10 @@ async function getAccessToken() {
     body: "grant_type=client_credentials",
   });
 
-  const data = await response.json();
+  const data = await parseJsonResponse(response);
+  if (!response.ok) {
+    throw new Error(data.error?.description || data.error || "Falha ao obter token Spotify");
+  }
   if (!data.access_token) {
     throw new Error(data.error?.description || "Falha ao obter token Spotify");
   }
@@ -42,7 +60,7 @@ export default async function handler(req, res) {
       },
     });
 
-    const data = await response.json();
+    const data = await parseJsonResponse(response);
 
     if (!response.ok) {
       return res.status(response.status).json({
